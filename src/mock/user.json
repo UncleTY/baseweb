@@ -29,8 +29,9 @@
       {"menu_parent_id":"BIZFRAME","menu_id":"bizMenu","menu_name":"系统菜单","menu_url":null,"menu_icon":"home"},
       {"menu_parent_id":"bizMenu","menu_id":"bizSysManager","menu_name":"系统管理","menu_icon":"home","menu_url":null},
       {"menu_parent_id":"bizSysManager","menu_id":"bizSetDict","menu_name":"数据字典设置","menu_icon":"home","menu_url":"/bizMenu/bizSysManager/bizSetDict"},
-      {"menu_parent_id":"bizSysManager","menu_id":"demo1","menu_name":"demo1","menu_icon":"home","menu_url":"/bizMenu/bizSysManager/demo1"},
-      {"menu_parent_id":"bizSysManager","menu_id":"demo2","menu_name":"demo2","menu_icon":"home","menu_url":"/bizMenu/bizSysManager/demo2"}
+      {"menu_parent_id":"bizSysManager","menu_id":"demo1","menu_name":"表单1","menu_icon":"home","menu_url":"/bizMenu/bizSysManager/demo1"},
+      {"menu_parent_id":"bizSysManager","menu_id":"demo2","menu_name":"表单2","menu_icon":"home","menu_url":"/bizMenu/bizSysManager/demo2"},
+      {"menu_parent_id":"bizSysManager","menu_id":"datatable","menu_name":"表格","menu_icon":"home","menu_url":"/bizMenu/bizSysManager/datatable"}
     ],
   "getMenuList" :[{
     "url": null,
