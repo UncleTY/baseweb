@@ -1,0 +1,344 @@
+$menu-prefix-cls: "#{$css-prefix}menu";
+$menu-dropdown-item-prefix-cls: "#{$menu-prefix-cls}-horizontal .#{$menu-prefix-cls}-submenu .#{$select-dropdown-prefix-cls} .#{$menu-prefix-cls}-item";
+$menu-collapse-prefix-cls: "#{$css-prefix}menu-collapse";
+
+.#{$menu-prefix-cls} {
+  display: block;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  list-style: none;
+  color: $text-color;
+  font-size: $font-size-base;
+  position: relative;
+  .iconfont{
+    font-size: 14px;
+  }
+  &-horizontal{
+    height: 60px;
+    line-height: 60px;
+
+    &.#{$menu-prefix-cls}-light{
+      &:after{
+        content: '';
+        display: block;
+        width: 100%;
+        height: 1px;
+        background: $border-color-base;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+      }
+    }
+  }
+  &-vertical{
+    &.#{$menu-prefix-cls}-light{
+      &:after{
+        content: '';
+        display: block;
+        width: 1px;
+        height: 100%;
+        background: $border-color-base;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 1;
+      }
+    }
+  }
+
+  &-light{
+    background: #fff;
+  }
+  &-dark{
+    background: $title-color;
+  }
+  &-primary{
+    background: $primary-color;
+  }
+
+  &-item{
+    display: block;
+    outline: none;
+    list-style: none;
+    font-size: $font-size-base;
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
+    transition: all $transition-time $ease-in-out;
+  }
+  &-item > i{
+    margin-right: 6px;
+  }
+  &-submenu-title > i, &-submenu-title span > i{
+    display: inline-block;
+    margin-right: 3px;
+    vertical-align: middle;
+  }
+
+  &-horizontal &-item,
+  &-horizontal &-submenu
+  {
+    float: left;
+    padding: 0 20px;
+    position: relative;
+    cursor: pointer;
+    z-index: 3;
+    transition: all $transition-time $ease-in-out;
+  }
+
+  &-light.#{$menu-prefix-cls}-horizontal &-item, &-light.#{$menu-prefix-cls}-horizontal &-submenu{
+    height: inherit;
+    line-height: inherit;
+    border-bottom: 2px solid transparent;
+    color: $text-color;
+    &-active, &:hover{
+      color: $primary-color;
+      border-bottom: 2px solid $primary-color;
+    }
+  }
+
+  &-dark.#{$menu-prefix-cls}-horizontal &-item, 
+  &-dark.#{$menu-prefix-cls}-horizontal &-submenu{
+    color: $menu-dark-subsidiary-color;
+    &-active, &:hover{
+      color: #fff;
+    }
+  }
+  // ----三级目录
+  &-dark.#{$menu-prefix-cls}-horizontal &-submenu &-submenu{ 
+      color: $text-color;
+      line-height: 1;
+      padding: 7px 16px 8px;
+      white-space: nowrap;
+      clear:both;
+      width: 100%;
+  }
+  &-dark.#{$menu-prefix-cls}-horizontal &-submenu &-submenu.#{$menu-prefix-cls}-active {
+    color: $text-color;
+  }
+  &-dark.#{$menu-prefix-cls}-horizontal &-submenu &-submenu &-submenu-title-icon {
+    float: right;
+  }
+  &-dark.#{$menu-prefix-cls}-horizontal &-submenu &-submenu .#{$select-dropdown-prefix-cls} {
+      // margin-left: -16px;
+       overflow-x: hidden;
+  }
+  // ----
+
+  //水平模式primary主题下hover/active时超出1px【添加背景色时导致】
+  &-primary.#{$menu-prefix-cls}-horizontal &-item, &-primary.#{$menu-prefix-cls}-horizontal &-submenu{
+    height: 60px;
+    line-height: 60px;
+    color: #fff;
+    &-active, &:hover{
+      background: $link-active-color;
+    }
+  }
+
+  &-horizontal &-submenu .#{$select-dropdown-prefix-cls} {
+    min-width: 100%;
+    width: auto;
+    max-height: none;
+    .#{$menu-prefix-cls}-item{
+      height: auto;
+      line-height: normal;
+      border-bottom: 0;
+      float: none;
+    }
+  }
+
+  &-item-group{
+    line-height: normal;
+    &-title {
+      height: 30px;
+      line-height: 30px;
+      padding-left: 8px;
+      font-size: $font-size-small;
+      color: $legend-color;
+    }
+
+    & > ul{
+      padding: 0 !important;
+      list-style: none !important;
+    }
+  }
+
+  // vertical
+  &-vertical &-item,
+  &-vertical &-submenu-title
+  {
+    padding: 14px 24px;
+    position: relative;
+    cursor: pointer;
+    z-index: 1;
+    transition: all $transition-time $ease-in-out;
+
+    &:hover{
+      background: $background-color-select-hover;
+    }
+  }
+
+  &-vertical &-submenu-title-icon{
+    // float: right;
+    // position: relative;
+    // top: 4px;
+    position: absolute;
+    right: 15px;
+    top: 10px
+  }
+  &-submenu-title-icon {
+    transition: transform $transition-time $ease-in-out;
+  }
+  // 三级目录
+  // &-opened &-submenu-title-icon{
+  //   -webkit-transform: rotate(180deg);
+  // }
+  &-opened > &-submenu-title > &-submenu-title-icon {
+    -webkit-transform: rotate(180deg);
+  }
+  &-vertical &-submenu &-item{
+    padding-left: 43px;
+  }
+  // 三级目录
+  &-vertical &-submenu &-submenu &-item{
+    padding-left: 63px;
+  }
+  &-vertical &-item-group{
+    &-title{
+      height: 48px;
+      line-height: 48px;
+      font-size: $font-size-base;
+      padding-left: 28px;
+    }
+  }
+  &-dark.#{$menu-prefix-cls}-vertical &-item-group{
+    &-title{
+        color: $text-color;
+    }
+  }
+
+  &-light.#{$menu-prefix-cls}-vertical &-item{
+    border-right: 2px solid transparent;
+    &-active:not(.#{$menu-prefix-cls}-submenu){
+      color: $primary-color;
+      border-right: 2px solid $primary-color;
+      z-index: 2;
+    }
+  }
+
+  &-dark.#{$menu-prefix-cls}-vertical &-item, &-dark.#{$menu-prefix-cls}-vertical &-submenu-title{
+    color: $menu-dark-subsidiary-color;
+    &-active:not(.#{$menu-prefix-cls}-submenu),
+    &-active:not(.#{$menu-prefix-cls}-submenu):hover
+    {
+      background: $menu-dark-active-bg;
+    }
+    &:hover{
+      color: #fff;
+      background: $title-color;
+    }
+    &-active:not(.#{$menu-prefix-cls}-submenu){
+      color: $primary-color;
+      border-right: 2px solid $primary-color;
+    }
+  }
+  &-dark.#{$menu-prefix-cls}-vertical &-submenu &-item{
+    &:hover{
+      color: #fff;
+      background: transparent !important;
+    }
+    &-active,&-active:hover{
+      border-right: none;
+      color: #fff;
+      background: $primary-color !important;
+    }
+    // 三级菜单下
+    &-active.#{$menu-prefix-cls}-opened {
+      background: transparent !important;
+    }
+  }
+  &-dark,#{$menu-prefix-cls}-vertical &-item-active &-submenu-title{
+    color: #fff;
+  }
+
+  &-dark.#{$menu-prefix-cls}-vertical &-opened{
+    background: $menu-dark-active-bg;
+    .#{$menu-prefix-cls}-submenu-title{
+        background: $title-color;
+    }
+    .#{$menu-prefix-cls}-submenu .#{$menu-prefix-cls}-submenu-title {
+       background : $menu-dark-active-bg;
+    }
+  }
+
+  &-collapse {
+    width: 64px;
+  }
+  &-collapse  &-submenu {
+     position: relative; 
+    
+  }
+  &-collapse > &-submenu > &-submenu-title {
+    // padding-left: 20px;
+    line-height: 21px;
+  }
+  &-collapse > &-submenu > &-submenu-title > i {
+    margin: 0;
+    // vertical-align: middle;
+    width: 20px;
+    text-align: center;
+  }
+  &-collapse > &-submenu > &-submenu-title > :not(.iconfont),
+  &-collapse > &-submenu > &-submenu-title > &-submenu-title-icon{
+    display: none;
+  }
+  &-collapse > &-submenu &{
+    position: absolute;
+    top: 0;
+    left: 100%;
+    z-index: 10;
+    width: 240px;
+  }
+  &-collapse.#{$menu-prefix-cls}-dark > &-submenu &{
+    background: #1a2229;
+  }
+  &-collapse &-opened &-submenu-title-icon {
+    -webkit-transform: rotate(0deg);
+  }
+  &-collapse.#{$menu-prefix-cls}-vertical.#{$menu-prefix-cls}-dark &-opened &-submenu-title {
+    background: #232a2f;
+  }
+}
+@include select-item($menu-prefix-cls, $menu-dropdown-item-prefix-cls);
+
+.#{$menu-dropdown-item-prefix-cls} {
+  padding: 7px 16px 8px;
+  font-size: $font-size-base !important;
+}
+
+/* .#{$menu-collapse-prefix-cls}.#{$menu-prefix-cls} {
+  width: 64px;
+  > .#{$menu-prefix-cls}-submenu-title {
+    position: relative; 
+    padding-left: 20px;
+    > i {
+      margin: 0;
+      vertical-align: middle;
+      width: 24px;
+      text-align: center;
+      line-height: 1;
+    }
+    > span{
+      height: 0;
+      width: 0;
+      overflow: hidden;
+      visibility: visible;
+      display: inline-block;
+    }
+    > i.#{$menu-prefix-cls}-submenu-title-icon {
+    display: none;
+    }
+  }
+} */

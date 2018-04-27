@@ -1,0 +1,105 @@
+$alert-prefix-cls: "#{$css-prefix}alert";
+$icon-prefix-cls: "#{$css-prefix}icon";
+
+.#{$alert-prefix-cls}{
+    position: relative;
+    padding: 8px 48px 8px 16px;
+    border-radius: $border-radius-base;
+    color: $text-color;
+    font-size: $font-size-small;
+    line-height: 16px;
+    margin-bottom: 10px;
+
+    &-with-icon{
+        padding: 8px 48px 8px 38px;
+    }
+
+    &-icon {
+        font-size: $font-size-base;
+        top: 8px;
+        left: 16px;
+        position: absolute;
+    }
+
+    &-desc {
+        font-size: $font-size-small;
+        color: $text-color;
+        line-height: 21px;
+        display: none;
+        text-align: justify;
+    }
+
+    &-success {
+        border: 1px solid lighten($success-color, 30%);
+        background-color: lighten($success-color, 40%);
+        .#{$alert-prefix-cls}-icon {
+            color: $success-color;
+        }
+    }
+
+    &-info {
+        border: 1px solid lighten($primary-color, 42%);
+        background-color: lighten($primary-color, 52%);
+        .#{$alert-prefix-cls}-icon {
+            color: $primary-color;
+        }
+    }
+
+    &-warning {
+        border: 1px solid lighten($warning-color, 25%);
+        background-color: lighten($warning-color, 35%);
+        .#{$alert-prefix-cls}-icon {
+            color: $warning-color;
+        }
+    }
+
+    &-error {
+        border: 1px solid lighten($error-color, 30%);
+        background-color: lighten($error-color, 38%);
+        .#{$alert-prefix-cls}-icon {
+            color: $error-color;
+        }
+    }
+
+    &-close {
+        @include content-close(-3px);
+        & i.iconfont {
+            color: #999;
+        }
+    }
+
+    &-with-desc {
+        padding: 16px;
+        position: relative;
+        border-radius: $border-radius-base;
+        margin-bottom: 10px;
+        color: $text-color;
+        line-height: 1.5;
+    }
+
+    &-with-desc &-desc{
+        display: block;
+    }
+
+    &-with-desc &-message {
+        font-size: 14px;
+        color: $title-color;
+        display: block;
+    }
+
+    &-with-desc &-icon {
+        top: 50%;
+        left: 24px;
+        margin-top: -21px;
+        & i.iconfont {
+            font-size: 28px;
+        }
+    }
+
+    &-with-banner{
+        border-radius: 0;
+    }
+}
+.#{$alert-prefix-cls}-with-desc.#{$alert-prefix-cls}-with-icon{
+    padding: 16px 16px 16px 69px;
+}

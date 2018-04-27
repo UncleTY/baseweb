@@ -1,0 +1,53 @@
+$backtop-prefix-cls-top: "#{$css-prefix}back-top";
+$backtop-prefix-cls-bottom: "#{$css-prefix}back-bottom";
+
+@mixin inner(){
+    background-color: rgba(0,0,0,.6);
+    border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.2);
+    transition: all $transition-time $ease-in-out;
+    padding: 4px 6px;
+    font-size: 14px;
+    color: #fff;
+    &:hover {
+        background-color: rgba(0,0,0,.7);
+    }
+}
+
+.#{$backtop-prefix-cls-top},
+.#{$backtop-prefix-cls-bottom} {
+    z-index: $zindex-back-top;
+    position: fixed;
+    cursor: pointer;
+    display: none;
+}
+
+.#{$backtop-prefix-cls-top} {
+    &.#{$backtop-prefix-cls-top}-show {
+        display: block;
+    }
+    &-inner {
+        @include inner();
+        i{
+            color: #fff;
+            font-size: 24px;
+            padding: 8px 12px;
+        }
+    }
+    
+}
+.#{$backtop-prefix-cls-bottom} {
+    display:block;
+    &.#{$backtop-prefix-cls-bottom}-hidden {
+        display: none;
+    }
+    &-inner {
+        @include inner();
+        i{
+            color: #fff;
+            font-size: 24px;
+            padding: 8px 12px;
+        }
+    }
+    
+}

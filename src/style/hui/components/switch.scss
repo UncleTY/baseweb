@@ -1,0 +1,131 @@
+$switch-prefix-cls: "#{$css-prefix}switch";
+
+.#{$switch-prefix-cls} {
+    display: inline-block;
+    width: 48px;
+    height: 24px;
+    line-height: 22px;
+    border-radius: 24px;
+    vertical-align: middle;
+    border: 1px solid #ccc;
+    background-color: #ccc;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+    transition: all $transition-time $ease-in-out;
+    &-inner {
+        color: #fff;
+        font-size: $font-size-small;
+        position: absolute;
+        left: 25px;
+        i {
+            width: 12px;
+            height: 12px;
+            text-align: center;
+        }
+    }
+    .slide {
+        content: '';
+        width: 20px;
+        height: 20px;
+        border-radius: 20px;
+        background-color: #fff;
+        position: absolute;
+        left: 1px;
+        top: 1px;
+        cursor: pointer;
+        transition: left $transition-time $ease-in-out, width $transition-time $ease-in-out;
+    }
+    &:active {
+        .slide {
+            width: 26px;
+        } 
+    }
+    &:focus {
+        box-shadow: 0 0 0 2px fade($primary-color, 20%);
+        outline: 0;
+    }
+    &:focus:hover {
+        box-shadow: none;
+    }
+    &-checked {
+        border-color: $primary-color;
+        background-color: $primary-color;
+
+        .#{$switch-prefix-cls}-inner {
+            left: 8px;
+        }
+        .slide {
+            left: 25px;
+        }
+        &:active .slide {
+           left: 19px; 
+        }  
+    }
+    &-info.#{$switch-prefix-cls}-checked {
+        border-color: $info-color;
+        background-color: $info-color;
+    }
+    &-success.#{$switch-prefix-cls}-checked {
+        border-color: $success-color;
+        background-color: $success-color;
+    }
+    &-warning.#{$switch-prefix-cls}-checked {
+        border-color: $warning-color;
+        background-color: $warning-color;
+    }
+    &-error.#{$switch-prefix-cls}-checked {
+        border-color: $error-color;
+        background-color: $error-color;
+    }
+    &-small {
+        width: 40px!important;
+        height: 20px!important;
+        line-height: 20px!important;
+        .slide {
+            width: 16px!important;
+            height: 16px!important;
+        }
+        &:active .slide {
+            width: 16px!important;
+        }
+    }
+    &-small.#{$switch-prefix-cls}-checked {
+        .slide {
+            left: 21px!important;
+        } 
+    }
+    &-small:active.#{$switch-prefix-cls}-checked {
+        .slide {
+            left: 9px!important;
+        }  
+    }
+    &-large {
+        width: 60px!important;
+        &:active .slide {
+            width: 26px!important;
+        }
+    }
+    &-large.#{$switch-prefix-cls}-checked {
+        .slide {
+            left: 37px!important;
+        }
+    }
+    &-large:active.#{$switch-prefix-cls}-checked {
+        .slide {
+            left: 25px!important;
+        }
+    }
+    &-disabled {
+        cursor: $cursor-disabled;
+        background: #e5e5e5;
+        border-color: #e5e5e5;
+        .slide {
+            background: #fff;
+            cursor: not-allowed;
+        }
+        .#{$switch-prefix-cls}-inner {
+            color: #ccc;
+        }
+    }
+}

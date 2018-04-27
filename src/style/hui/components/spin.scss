@@ -1,0 +1,69 @@
+$spin-prefix-cls: "#{$css-prefix}spin";
+$spin-dot-size-small: 12px;
+$spin-dot-size: 20px;
+$spin-dot-size-large: 32px;
+
+.#{$spin-prefix-cls} {
+  color: $primary-color;
+  vertical-align: middle;
+  text-align: center;
+
+  &-dot {
+      position: relative;
+      display: block;
+      border-radius: 50%;
+      background-color: $primary-color;
+      @include square($spin-dot-size);
+      animation: ani-spin-bounce 1s 0s ease-in-out infinite;
+  }
+
+  &-large &-dot {
+    @include square($spin-dot-size-large);
+  }
+
+  &-small &-dot {
+    @include square($spin-dot-size-small);
+  }
+
+  &-fix {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: $zindex-spin;
+    display: table;
+    @include square(100%);
+    background-color:  rgba(255,255,255,.9);
+  }
+
+  &-fix &-main {
+    display: table-cell;
+    vertical-align: middle;
+    @include square(inherit);
+  }
+
+  &-fix &-dot {
+    display: inline-block;
+  }
+
+  &-text,
+  &-show-text &-dot {
+    display: none;
+  }
+
+  &-show-text &-text {
+      display: block;
+  }
+}
+
+@keyframes ani-spin-bounce {
+  0% {
+    transform: scale(0);
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}

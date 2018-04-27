@@ -1,0 +1,261 @@
+$select-prefix-cls:  "#{$css-prefix}select";
+$select-item-prefix-cls:  "#{$css-prefix}select-item";
+$select-group-prefix-cls:  "#{$css-prefix}select-group";
+
+.#{$select-prefix-cls} {
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+    vertical-align: middle;
+    color: $text-color;
+    font-size: $font-size-base;
+    //position: relative;
+    line-height: normal;
+    position: relative;
+
+    &-selection {
+        display: block;
+        box-sizing: border-box;
+        outline: none;
+        user-select: none;
+        cursor: pointer;
+        /*position: relative;*/
+
+        background-color: #fff;
+        border-radius: $btn-border-radius;
+        border: 1px solid $border-color-base;
+        transition: all $transition-time $ease-in-out;
+
+
+        .#{$select-prefix-cls}-arrow:nth-of-type(1) {
+            display: none;
+            cursor: pointer;
+        }
+
+        &:hover {
+            @include hover();
+            .#{$select-prefix-cls}-arrow:nth-of-type(1) {
+                display: inline-block;
+            }
+        }
+    }
+    &-show-clear &-selection:hover .#{$select-prefix-cls}-arrow:nth-of-type(2) {
+        display: none;
+    }
+
+    &-arrow {
+        @include inner-arrow();
+    }
+
+    &-visible{
+        .#{$select-prefix-cls}-selection{
+            @include active();
+        }
+
+        .#{$select-prefix-cls}-arrow:nth-of-type(2) {
+            transform: rotate(180deg);
+        }
+    }
+
+    &-disabled {
+        .#{$select-prefix-cls}-selection {
+            @include disabled();
+
+            .#{$select-prefix-cls}-arrow:nth-of-type(1) {
+                display: none;
+            }
+
+            &:hover {
+                border-color: $border-color-base;
+                box-shadow: none;
+
+                .#{$select-prefix-cls}-arrow:nth-of-type(2) {
+                    display: inline-block;
+                }
+            }
+        }
+    }
+
+    &-single &-selection{
+        height: $input-height-base;
+        position: relative;
+
+        .#{$select-prefix-cls}-placeholder{
+            color: $input-placeholder-color;
+        }
+
+        .#{$select-prefix-cls}-placeholder, .#{$select-prefix-cls}-selected-value{
+            display: block;
+            height: $input-height-base - 2px;
+            line-height: $input-height-base - 2px;
+            font-size: $font-size-small;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            padding-left: 8px;
+            padding-right: 24px;
+        }
+    }
+
+    .#{$select-prefix-cls}-large.#{$select-prefix-cls}-single &-selection{
+        height: $input-height-large;
+
+        .#{$select-prefix-cls}-placeholder, .#{$select-prefix-cls}-selected-value{
+            height: $input-height-large - 2px;
+            line-height: $input-height-large - 2px;
+            font-size: $font-size-base;
+        }
+    }
+
+    .#{$select-prefix-cls}-small.#{$select-prefix-cls}-single &-selection{
+        height: $input-height-small;
+        border-radius: $btn-border-radius-small;
+
+        .#{$select-prefix-cls}-placeholder, .#{$select-prefix-cls}-selected-value{
+            height: $input-height-small - 2px;
+            line-height: $input-height-small - 2px;
+        }
+    }
+
+    &-multiple &-selection{
+        overflow: auto;
+        height: $input-height-base;
+        padding-right:30px;
+
+        .#{$select-prefix-cls}-placeholder{
+            display: block;
+            height: $input-height-base - 2px;
+            line-height: $input-height-base - 2px;
+            color: $input-placeholder-color;
+            font-size: $font-size-small;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            padding-left: 4px;
+            padding-right: 22px;
+        }
+    }
+
+    // input
+    &-input{
+        display: inline-block;
+        height: $input-height-base;
+        line-height: $input-height-base;
+        padding: 0 24px 0 8px;
+        font-size: $font-size-small;
+        outline: none;
+        border: none;
+        box-sizing: border-box;
+        color: $input-color;
+        background-color: transparent;
+        position: relative;
+        cursor: pointer;
+        @include placeholder();
+    }
+
+    &-single &-input{
+        width: 100%;
+    }
+
+    &-large &-input{
+        font-size: $font-size-base;
+        height: $input-height-large;
+    }
+
+    &-small &-input{
+        height: $input-height-small;
+    }
+
+    &-multiple &-input{
+        height: $input-height-base - 3px;
+        line-height: $input-height-base;
+        padding: 0 0 0 4px;
+    }
+
+    &-not-found{
+        text-align: center;
+        color: $btn-disable-color;
+    }
+    &-loading{
+        text-align: center;
+        color: $btn-disable-color;
+    }
+
+    &-multiple .#{css-prefix}tag{
+        margin: 3px 4px 2px 0;
+    }
+
+    // select-arrow
+    &-single &-selection {
+        .#{$select-prefix-cls}-arrow {
+            right: 8px!important;
+        }
+    }
+
+    // select-dropdown-list checkbox
+    &-dropdown &-dropdown-list {
+        .#{$select-prefix-cls}-item {
+            position: relative;
+            & label {
+                position: absolute;
+                right: 8px;
+            }
+        }
+    }
+}
+
+@include select-item($select-prefix-cls, $select-item-prefix-cls);
+
+.#{$select-prefix-cls}-multiple .#{$select-item-prefix-cls} {
+    &-selected{
+        color: $selected-color;
+        background: #fff;
+    }
+    &-focus,&-selected:hover{
+        color:$selected-color;
+        background: $background-color-select-hover;
+    }
+
+    .#{$select-item-prefix-cls}-selected.#{$select-item-prefix-cls}-focus {
+        color: shade($selected-color, 10%);
+        background: #fff;
+    }
+    .#{$checkbox-prefix-cls}-wrapper {
+        float: right;
+    }
+    // &-selected:after{
+    //     @include h-icon();
+    //     float: right;
+    //     font-size: 20px;
+    //     content: "\e734";
+    //     color: $selected-color;
+    // }
+}
+
+.#{$select-group-prefix-cls} {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    &-title {
+        padding-left: 8px;
+        font-size: 12px;
+        color: $legend-color;
+        height: 30px;
+        line-height: 30px;
+    }
+}
+
+.#{$form-item-prefix-cls}-error{
+    .#{$select-prefix-cls}{
+        &-selection{
+            border: 1px solid $error-color;
+        }
+        &-arrow{
+            color: $error-color;
+        }
+        &-visible .#{$select-prefix-cls}-selection{
+            @include active-error;
+        }
+    }
+}

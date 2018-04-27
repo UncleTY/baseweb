@@ -1,0 +1,177 @@
+$tb-prefix-cls: "#{$css-prefix}topbar";
+$tbWrap-prefix-cls: "#{$tb-prefix-cls}-wrapper";
+
+.#{$tbWrap-prefix-cls} {
+  width: 100%;
+  height: $topbar-base-height;
+  position: fixed; 
+  top: 0;
+  left: 0;  
+  z-index: 990;
+  border: none;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-box-shadow: $topbar-shadow;
+  box-shadow: $topbar-shadow;
+  background: $topbar-bgcolor;
+  @include user-select();
+}
+.#{$tb-prefix-cls} {
+  /* logo */
+  &-logo {
+    width: $sidebar-base-width;
+    height: $topbar-base-height;
+    line-height: $topbar-line-height;
+    padding: 12px;
+    float: left;
+    color: $topbar-color;
+    &-img {
+      float: left;
+      width: 40px;
+      height: $topbar-base-height;
+      margin: -8px 0 0 -10px;
+      background: url('../assets/logo.png') 16px 8px no-repeat;
+      // background: url('../../assets/logo.png') 16px 8px no-repeat;
+      
+    }
+    &-span {
+      margin-left: -25px;
+      font-size: $topbar-l-fonsize;;
+      font-weight: $topbar-fontweight;
+    }
+  }
+  /* nav */
+  &-nav {
+    float: left;
+    font-weight: $topbar-fontweight;
+    height: $topbar-base-height;
+    overflow: hidden;
+    padding-right: 20px;
+    position: relative;
+    .h-menu-dark.h-menu-horizontal {
+      > .h-menu-item {
+        padding:  $topbar-nav-padding;
+      }
+    }
+    .h-topbar-navMenu.h-menu.h-menu-horizontal {
+      text-align: left;
+      white-space: nowrap;
+      width: auto;
+      display: inline-block;
+      .h-menu-item,
+      .h-menu-submenu {
+        float: none;
+        display: inline-block;
+      }
+    }
+    .h-menu-more {
+      position: absolute;
+      right: 0;
+      top: 0;
+      color: $topbar-color;
+      line-height: $topbar-base-height;
+    }
+  }
+  
+  /* common menu color set */
+  .h-menu-dark.h-menu-horizontal {
+    height: $topbar-base-height;
+    line-height: $topbar-base-height;
+    background: $topbar-bgcolor;
+    .h-menu-item,
+    .h-menu-submenu {
+      color: $topbar-color;
+      &:hover {
+        background: $topbar-hover-bgcolor;
+      }
+    }
+    .h-menu-item-active,
+    .h-menu-submenu-active {
+      color: $topbar-active-color;
+      background: $topbar-active-bgcolor;
+    }
+    .h-menu-submenu .h-select-dropdown .h-menu-item {
+      background: $topbar-selectdown-bgcolor;
+      color: $topbar-selectdown-color;
+      &:hover{
+        color: $base-color;
+        background: $topbar-selectdown-hover-bgcolor;
+      }
+    }
+  }
+  /* search */
+  &-search {
+    float: right;
+    width: $topbar-search-width;
+    padding: $topbar-search-padding;
+    i.iconfont.icon-arrowdownb.h-select-arrow:before {
+      content: "\e75c";
+    }
+  }
+ /* toolbar */
+  &-tool {
+    float: right;
+    .h-icon {
+      font-size: 22px;
+    }
+    .icon-unfold {
+      display: none
+    }
+    .toolLast .h-select-dropdown {
+      margin-left: -90px;
+    }
+    .theme .h-select-dropdown {
+      padding: 5px 10px;
+      width: 150px;
+      text-align: left;
+      margin-left: -20px;
+      line-height: 35px;
+      .h-menu-item {
+        width: 40px;
+        display: inline-block;
+        padding: 4px 10px;
+        &:hover {
+          background: #EEEEEE !important;
+        }
+        i {
+          margin: 0;
+          font-size: 20px;
+        }
+      }
+    }
+    .h-menu-dark.h-menu-horizontal {
+      > .h-menu-item,
+      > .h-menu-submenu {
+        height: $topbar-base-height;
+        padding: $topbar-tool-padding;               
+      }
+      .h-menu-submenu {
+        .h-menu-submenu-title {
+          line-height: $topbar-base-height - 1px;
+        } 
+        .h-select-dropdown {
+          .h-menu-item {
+            -webkit-transition: none;
+            transition: none; 
+          }
+          .h-icon {
+            font-size: 18px;
+            display: inline-block;
+            vertical-align: middle;
+          }
+        }
+        &:hover {
+          color: $topbar-active-color;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 860px) {
+  .#{$tb-prefix-cls} {
+    &-tool {
+      display: none;
+    }
+  }
+}

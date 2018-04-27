@@ -1,0 +1,64 @@
+{
+  "login": {
+      "return_code": "0",
+      "sessionId": "admin"
+  },
+  "reLogin": {
+    "return_code": "0",
+    "sessionId": "admin"
+  },
+  "logout": {
+    "sessionId":null,
+    "token":null,
+    "return_code": "0",
+    "return_info": "退出成功",
+    "optAuths":null
+  },
+  "getMenuListWithLogin": [{
+    "error_no": 0,
+    "error_info" :"登录成功",
+    "menus":[
+        {"menu_parent_id":"BIZFRAME","menu_id":"bizMenu","menu_name":"系统菜单","menu_url":null,"menu_icon":"home"},
+        {"menu_parent_id":"bizMenu","menu_id":"bizSysManager","menu_name":"系统管理","menu_icon":"home","menu_url":null},
+        {"menu_parent_id":"bizSysManager","menu_id":"bizSetDict","menu_name":"数据字典设置","menu_icon":"home","menu_url":"/bizMenu/bizSysManager/bizSetDict"}
+      ]
+    }
+  ],
+  "getCheckCode": {"sessionId":"admin","code":"4954"},
+  "getMenuListSimp": [
+      {"menu_parent_id":"BIZFRAME","menu_id":"bizMenu","menu_name":"系统菜单","menu_url":null,"menu_icon":"home"},
+      {"menu_parent_id":"bizMenu","menu_id":"bizSysManager","menu_name":"系统管理","menu_icon":"home","menu_url":null},
+      {"menu_parent_id":"bizSysManager","menu_id":"bizSetDict","menu_name":"数据字典设置","menu_icon":"home","menu_url":"/bizMenu/bizSysManager/bizSetDict"},
+      {"menu_parent_id":"bizSysManager","menu_id":"demo1","menu_name":"demo1","menu_icon":"home","menu_url":"/bizMenu/bizSysManager/demo1"},
+      {"menu_parent_id":"bizSysManager","menu_id":"demo2","menu_name":"demo2","menu_icon":"home","menu_url":"/bizMenu/bizSysManager/demo2"}
+    ],
+  "getMenuList" :[{
+    "url": null,
+    "parentId": "BIZFRAME",
+    "expand": true,
+    "id": "bizMenu",
+    "title": "系统菜单",
+    "icon": "home",
+    "children": [
+      {
+        "url": null,
+        "parentId": "bizMenu",
+        "expand": true,
+        "id": "bizSysManager",
+        "title": "用户管理",
+        "icon": "home",
+        "children": [
+          {
+            "url": "/bizMenu/bizSysManager/bizSetDict",
+            "parentId": "bizSysManager",
+            "expand": true,
+            "id": "",
+            "title": "数据字典设置",
+            "icon": "home",
+            "children": null
+          }
+        ]
+      }
+    ]
+  }]
+}
